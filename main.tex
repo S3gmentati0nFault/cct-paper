@@ -1,6 +1,9 @@
 \documentclass[a4paper,10pt]{article}
 \usepackage{src/preamble}
 
+\usepackage{biblatex}
+\addbibresource{ResearchPaperBib.bib}
+
 \begin{document}
 
 \noindent 
@@ -27,8 +30,43 @@
 \noindent 
 \textbf{STATEMENT OF ORIGINALITY:} 
 
-\bibliography{ResearchPaperBib}
-
 \clearpage
 
+\noindent
+\textbf{INTRODUCTION:}
+\label{sec:introduction}
+\\
+\input{src/introduction.tex}
+
+
+\noindent
+\textbf{DIFFERENT TYPES OF AGENTS:}
+\phantomsection
+\makeatletter\def\@currentlabel{(I)}\makeatother
+\label{sec:ai-agents}
+\\
+
+
+\noindent
+\textbf{OPPORTUNITIES:}
+\phantomsection
+\label{sec:opportunities}
+\\
+
+
+\noindent
+\textbf{TECHNICAL LIMITATIONS:}
+\phantomsection
+\label{sec:technical-limitations}
+\\
+
+
+\noindent
+\textbf{FUTURE CHALLENGES:}
+\phantomsection
+\label{sec:future-challenges}
+\\
+
+\clearpage
+\printbibliography
 \end{document}
