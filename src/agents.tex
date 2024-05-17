@@ -1,0 +1,117 @@
+\externaldocument{../main.tex}
+
+Mobile communication technologies have been a standard evolving since the very first
+generation of the technology released in 1981. Every ten years a new standard is formulated and
+developed to propel the industry forward, the generational improvements were not necessarily
+paradigm shifts, as an example, the move from 3G to 4G was more along the line of a performance bump,
+meanwhile the passage to 5G and 6G represented and will represent a big leap forward in terms of
+what the network is able to support and what will be able to bring to the table in the future.
+
+At the moment researchers in all the fields are trying to find the limits of the new standard to
+push it even further and also to make 6G achievable on a very large scale, we should expect the
+first real world tests with end users in 2030. According to Nokia\cite{nokiabell} the six key aspects of the future generation of mobile communication technologies can be summarized in the following subsections.
+
+\bigskip
+\noindent
+NEW SPECTRUM TECHNOLOGIES:
+\phantomsection
+\label{ssec:spectrum-technologies}
+
+The objective with 5G was achieving a big enhancement of the performance of the mobile communication
+network in both upload and download, it was therefore necessary to provide mobile systems with a new
+type of antenna that was able to work with millimeter waves (wavelength in the realm of the
+millimeters), the available spectrum bands were:
+\begin{itemize}
+	\item 24 - 71 GHz which is high band 5G.
+	\item 2.5 - 4.9 GHz which is the mid band 5G.
+	\item 600 - 2600 MHz which is the low band 5G.
+\end{itemize}
+6G is thought to be implemented to use more wisely the space of millimeter waves and go beyond 71
+GHz allowing for a higher spectral efficiency, the new standard will incorporate the 5G spectrum
+standard, widen it, and take better advantage of the pre-existing bands. The structure of the spectrum is still being studied but the foundations seem to be the following:
+\begin{itemize}
+	\item 470 - 690 MHz extreme wide area coverage.
+	\item 600 - 2600 MHz wide area coverage.
+	\item 2.4 - 4.9 GHz urban capacity.
+	\item 7 - 20 GHz extreme urban capacity.
+	\item 24 - 71 GHz hotspot capacity.
+	\item > 92 GHz will be the extremely short range communication system and is currently being
+	called the sub-TeraHertz band.
+\end{itemize}
+
+\bigskip
+\noindent
+AI AND MACHINE LEARNING:
+\phantomsection
+\label{ssec:ai-ml}
+
+On the particular aspects of AI and Machine Learning we have many diverse weapons that can be put to
+the service of the network or to the service of the users depending on the end goal that needs to
+be achieved.
+
+AI for the end user comes especially in the form of the so called LLM or Large Language Model. In
+the last couple of years models like ChatGPT, GPT-4, LLaMa, etc... Have seen a spike not only in
+their usage but also in the capabilities of the models that have been deployed. The multimodal nature of some of the bigger models can be leveraged to allow a more reliable and detailed resolution of the problems at hand and the use of prompt engineering techniques like Chain of Thought and Retrieval Augmented Generation can turn the devices in the hand of end users into powerful assistants that can handle many tasks both requested by the users themselves and autonomously.
+
+Private automation, robotics and healthcare are just a couple of the fields that will be most
+impacted by the addition of LLMs very close to the edge of the network. I'll go back at considering
+the topic in the section \ref{sec:technical-limitations} to show how the feat that was just proposed
+is extremely challenging and will require the employment of the most recent distributed machine
+learning techniquest to face it.
+
+AI for the network is usually employed with the aim of trimming the resource usage allowing for a
+more efficient employment of the available resources. This can be achieved using Reinforced learning models, or RLMs, these models should be
+employed to help the network scale up and scale down whenever necessary to allow the usage of as
+little resources as possible without hindering the quality of the offered services. Furthermore RLMs can be
+used to help mitigate the problems that the employment of LLMs very close to the edge of the network
+provoke.
+
+\bigskip
+\noindent
+SECURITY AND TRUST:
+\phantomsection
+\label{ssec:security-trust}
+
+The changes in the spectrum distribution of the network and the use of AI in the network forces
+research to face a series of extremely important questions linked to private data security and
+individual security. 
+
+Giving AI more power and control means that it's necessary to be able to
+control its operation and make sure that is, not only, behaving according to specification, but also
+not being fed polluted data during the training process by malicious third parties. Having extremely-high-frequency bands in the spectrum will expose communications to easy
+eavesdropping, it's therefore necessary to create security procedures that allow communications to
+remain private even when using these frequency bands.
+
+\bigskip
+\noindent
+SENSING NETWORK:
+\phantomsection
+\label{ssec:sensing-network}
+
+The use of Machine Learning and AI techniques coupled with a very high number of sensors will allow
+the nodes of the network to sense the environment around them, this is an extremely useful technique to generate a Digital Twin of the real world, storing precious information about the surroundings and generating information through LLM inference.
+
+Regarding the above Minrui Xu et al. \cite{pga} wrote a paper discussing how the multimodality of today’s LLMs alongside a wide array of sensors can be employed to generate automatically crash reports that can be further refined by seding them to a richer and more expressive LLM deployed at the edge of the network.
+
+\bigskip
+\noindent
+EXTREME CONNECTIVITY:
+\phantomsection
+\label{ssec:extreme-connectivity}
+
+The level of the services that are probably going to be brought to 6G require extremely fast and extremely
+low-latency communication, therefore the Ultra-Reliable and Low-Latency Communication service will be refined and improved to serve the new standard and bring the latency number to below-millisecond latency.
+
+\bigskip
+\noindent
+NEW ARCHITECTURAL MODELS:
+\phantomsection
+\label{ssec:architectural-models}
+
+6G is thought to work alongside cloud and allow users to experience it differently, the paradigm of having
+big datacenters at the top of the cloud that handle all of the computation will be shifted towards an extremely distributed architecture centered around data management pipelines that involve only the devices in the hierarchy that are of use to the computation itself.
+
+This means that the 6G network will be deploying, alongside the big datacenters at the top of the cloud, a series of intermediate stations that grow in computational power the more the data goes up in the hierarchy. For the scope of this paper I will be most interested in the edge stations, which are the closest to the end users and the ones that will have to deal with storing and operating inference on LLMs.
+
+\medskip
+In the next sections I’ll be diving deeper in the opportunities, challenges and solutions associated with the deployment of LLMs at the edge of the network.
