@@ -21,6 +21,22 @@ without the need of human intervention.
 
 \bigskip
 \noindent
+END:
+\phantomsection
+\label{ssec:end}
+
+Going from the ground-up we can build the network architecture starting with the sensors, the end
+devices, basically a fog of computational devices of all matters and sizes that are able to do
+computation, generate data or process information.
+
+Of extreme importance next to the controller, the end devices are the entities that provide much of
+the data that allow the controller LLM to do inference, like in the case explored in the \cite{pga}
+paper the data necessary to create a description of a car crash or an incident is provided by a set
+of sensors that constantly generate data and are able to do inference on the generated data using
+very limited LLMs that are useful to be able to do initial assessments of situations.
+
+\bigskip
+\noindent
 CONTROLLER:
 \phantomsection
 \label{ssec:controller}
@@ -38,9 +54,10 @@ In other cases the LLM controller is used to understand the user's necessities a
 system accordingly, like in \cite{ai4ci}. Another solution seems to be more suited for a RLM
 approach, using a RLM trained to do efficient dispatching of resources \cite{llm6G}.
 
-In any way, shape, or form the controller is shipped it's a necessary component of a network such as
-6G because it's going to be necessary to be able to understand and act according to the user's
-status and context.
+In any way, shape, or form the controller, usually named also edge, is shipped it's a necessary
+component of a network such as 6G because it's going to be necessary to be able to understand and
+act according to the user's status and context. It also provides more computational power for bigger
+inference tasks that would be otherwise impossible on the smaller end nodes.
 
 If we consider a more industry-driven example, even in the field of heavy machinery or energy
 production, it's very useful to have a system able to take a decision extremely rapidly based on a
@@ -51,12 +68,33 @@ energy or time wastes.
 
 \bigskip
 \noindent
-END:
+CLOUD:
 \phantomsection
-\label{ssec:end}
+\label{ssec:cloud}
 
-Of extreme importance next to the controller, the end devices are the entities that provide much of
-the data that allow the controller LLM to do inference, like in the case explored in the \cite{pga}
-paper the data necessary to create a description of a car crash or an incident is provided by a set
-of sensors that constantly generate data and are able to do inference on the generated data using
-very limited LLMs that are useful to be able to do initial assessments of situations.
+Last but not least it's important to take into consideration the fact that the bigger models that
+are used as a foundation for all of the other models that can be deployed through the controller to
+allow the user to have the most comprehensive and cohesive experience possible need to be trained
+somehow.
+
+If we consider the GPT-3 model, which is the one that is the name that appears the most in the
+recent literature, it would be necessary to have more than 1000 GPUs running non-stop for more than
+4 months to have the complete training of the 175B parameters that compose the model \cite{gaisnet}. This task
+would be impossible for the low power systems deployed at the end or even at the edge, therefore
+it's necessary to leverage the power of big data-centers positioned at the end of the network
+hierarchy. It's important to note, obviously, that such a task would be a waste of time for the big
+data-centers that we place at the end of the hierarchy, I will provide more detailed information
+about the various techniques that have been taken into consideration to solve the problem of
+handling enormous models in reduced spaces.
+
+I have to admit that from what I had originally promised this section of the paper does look way
+more bland than originally intended, this architecture that I provided above is nothing new and we
+have already seen it many times and is just the normal evolution of the cloud environment (which is
+already partly taking place at the moment), and I think that is the reason why it's extremely
+effective, the architecture is nothing new or revolutionary, it's just the fusion (with some evident
+caveats that we'll go through in the next session) of artificial intelligence with the pre-existing
+cloud and wireless-network infrastructure.
+
+In the next session I will go through the various challenges that we will be facing when the moment
+comes to start implementing the fusion of the service architecture of 5G with the AI agents and why
+the upgrade is not as easy as it might look like in the above explanation.
