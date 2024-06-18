@@ -1,0 +1,30 @@
+\externaldocument{../main.tex}
+
+In the previous section I might have made things easier than they should be to allow a simplified
+explanation of the core components of the 6G architecture and I tried to stress the consideration
+that the future of wireless network technologies is not in anything incredibly different but just a
+different interpretation of something that we already have developed.
+
+It's now time to discuss the extreme challenges that will be faced when trying to get the new
+structure running.
+
+First and foremost I think that we should address the size problem.
+As was said in the last section the network will be partitioned into sections that will be able to
+handle inference and training of LLMs or RLMs of varying sizes, that is true until we take into
+consideration the problem of latency; if we pushed latency out of the equation the result would be
+that we just have to assign LLMs one to one to classes of machines that are able to handle
+operations on them, models like GPT3 would be constantly residing inside the data-centers, while
+models like LLaMa-7B would reside in edge or even end buffed end nodes.
+
+The above reasoning is true only in part when latency is accounted for and that is because
+communicating with the cloud is really costly, and when the objective is to develop a support for
+future latency-intolerant applications like robotics, teleoperated medical care, industry 4.0 and
+more it's necessary to have the right model readily available and to receive responses in a timely
+fashion. To do so methods have been invented to "shrink" the size of models without hurting their
+performance.
+
+SPLITTING
+
+FEDERATED LEARNING
+
+EFFICIENT TUNING
