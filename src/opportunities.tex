@@ -1,0 +1,62 @@
+\externaldocument{../main.tex}
+
+In this chapter I will present the countless opportunities that come from a merge between AI and the
+upcoming 6G network. Clearly the opportunities depend on the architecture of the network and are
+extremely example specific but I am going to try and condense the structure of the various models
+proposed in the very recent literature into a series of shared features.
+
+The idea of implementing AI as an agent in the field of 6G networking is rooted into the want for
+the creation of the most versatile personal assistant in commerce, attempts have been made in the
+past on the consumer level with clearly inferior models (e.g. "Siri" or "Cortana") but now the
+objective is to create a seamless and encompassing ecosystem that can adapt and provide the user
+with information on his own self that goes beyond anything we can currently imagine. Considering the
+litreature that is looking to the future the most the hypothesis of developing a completely
+autonomous edge AI capable of self-improvement and self-organization \cite{ai4ci} is a realistic
+prospect; forgetting for a moment all of the complex problems that need to be addressed it does look
+like a problem that can be solved with the materials at hand.
+
+The question that I will try to answer now is what is required to have a network that can handle
+users, provide them with very custom experiences and react to situations and stimuli automatically
+without the need of human intervention.
+
+\bigskip
+\noindent
+CONTROLLER:
+\phantomsection
+\label{ssec:controller}
+
+As was said in previous sections AI models have come very far thanks to the rapid improvements in
+the field of LLM development. It's easy to understand that, if it's necessary to provide the user
+with a very custom experience it's also necessary to have a system that can understand both the
+context and the necessity without the need of additional information (since the premise is that the
+system has to be integrated seamlessly with the user's life).
+In some cases the LLM controller was just considered to be a larger downstream node inside the
+network capable of handling the aggregation of the results of other smaller models like in
+\cite{pga}, and it was used as an example for automatic crash detection and reconstruction in the
+field of autonomous driving.
+In other cases the LLM controller is used to understand the user's necessities and modifies the
+system accordingly, like in \cite{ai4ci}. Another solution seems to be more suited for a RLM
+approach, using a RLM trained to do efficient dispatching of resources \cite{llm6G}.
+
+In any way, shape, or form the controller is shipped it's a necessary component of a network such as
+6G because it's going to be necessary to be able to understand and act according to the user's
+status and context.
+
+If we consider a more industry-driven example, even in the field of heavy machinery or energy
+production, it's very useful to have a system able to take a decision extremely rapidly based on a
+certain situation. Modern control systems are able to take action and make corrections rapidly and
+precisely, providing excellent results and avoiding costly mistakes, having an LLM that is instead able
+to make more "management-oriented" decisions based on data might provide itself useful to avoid
+energy or time wastes.
+
+\bigskip
+\noindent
+END:
+\phantomsection
+\label{ssec:end}
+
+Of extreme importance next to the controller, the end devices are the entities that provide much of
+the data that allow the controller LLM to do inference, like in the case explored in the \cite{pga}
+paper the data necessary to create a description of a car crash or an incident is provided by a set
+of sensors that constantly generate data and are able to do inference on the generated data using
+very limited LLMs that are useful to be able to do initial assessments of situations.
