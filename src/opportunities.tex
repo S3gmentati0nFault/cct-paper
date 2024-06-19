@@ -2,18 +2,18 @@
 
 In this chapter I will present the countless opportunities that come from a merge between AI and the
 upcoming 6G network. Clearly the opportunities depend on the architecture of the network and are
-extremely example specific but I am going to try and condense the structure of the various models
-proposed in the very recent literature into a series of shared features.
+example specific but I am going to try and condense the structure of the various models proposed in the very recent literature into a series of shared features.
 
 The idea of implementing AI as an agent in the field of 6G networking is rooted into the want for
 the creation of the most versatile personal assistant in commerce, attempts have been made in the
 past on the consumer level with clearly inferior models (e.g. "Siri" or "Cortana") but now the
 objective is to create a seamless and encompassing ecosystem that can adapt and provide the user
-with information on his own self that goes beyond anything we can currently imagine. Considering the
-litreature that is looking to the future the most the hypothesis of developing a completely
-autonomous edge AI capable of self-improvement and self-organization \cite{ai4ci} is a realistic
-prospect; forgetting for a moment all of the complex problems that need to be addressed it does look
-like a problem that can be solved with the materials at hand.
+with information on his own self that goes beyond anything we can currently imagine. An example that
+recurs often in the literature to explain what the potential of AI is to have a set of non-invasive sensors that can provide with discretely precise measurements of health data (bpm,
+glicemy, pressure, etc...) and having a model on a device, like a smartphone, that is able to understand
+whether the values are in the norm and in case provide advices to make them better, this would have
+to be inserted in a framework that is also able to reliably understand the user's attitude and
+context to avoid annoying push notifications.
 
 The question that I will try to answer now is what is required to have a network that can handle
 users, provide them with very custom experiences and react to situations and stimuli automatically
@@ -27,13 +27,22 @@ END:
 
 Going from the ground-up we can build the network architecture starting with the sensors, the end
 devices, basically a fog of computational devices of all matters and sizes that are able to do
-computation, generate data or process information.
+computation, generate data or process information. Less than the 1\% of these nodes is going to be
+capable of running models and usually they will be extremely simple in nature, probably the only LLM
+available would be the ones in the order of <1B.
 
-Of extreme importance next to the controller, the end devices are the entities that provide much of
-the data that allow the controller LLM to do inference, like in the case explored in the \cite{pga}
-paper the data necessary to create a description of a car crash or an incident is provided by a set
-of sensors that constantly generate data and are able to do inference on the generated data using
-very limited LLMs that are useful to be able to do initial assessments of situations.
+The fog is supposedly a very heterogeneous mass of computing devices, probably the most important
+characteristic of this element of the hierarchy is the variance of computational power of the
+devices. In the following I will list all of the devices that I think will be part of the network.
+
+\underline{Sensors} - which are capable of handling only the measurement of certain parameters and some limited computations (usually they are battery-powered devices).
+
+\underline{Non-sensing devices} - this category is quite broad but I would consider all of the personal
+devices to be part of it, anything that the user can interact with and is connected to the 6G network should be considered a bigger node in the fog and should be capable of running AI models.
+
+The fog is supposedly a very heterogeneous mass of computing devices, probably the most important
+characteristic of this element of the hierarchy is the variance of computational power of the
+devices. In the following I will list all of the devices that I think will be part of the network.
 
 \bigskip
 \noindent
@@ -41,29 +50,28 @@ CONTROLLER:
 \phantomsection
 \label{ssec:controller}
 
-As was said in previous sections AI models have come very far thanks to the rapid improvements in
-the field of LLM development. It's easy to understand that, if it's necessary to provide the user
-with a very custom experience it's also necessary to have a system that can understand both the
-context and the necessity without the need of additional information (since the premise is that the
-system has to be integrated seamlessly with the user's life).
-In some cases the LLM controller was just considered to be a larger downstream node inside the
-network capable of handling the aggregation of the results of other smaller models like in
-\cite{pga}, and it was used as an example for automatic crash detection and reconstruction in the
-field of autonomous driving.
-In other cases the LLM controller is used to understand the user's necessities and modifies the
-system accordingly, like in \cite{ai4ci}. Another solution seems to be more suited for a RLM
-approach, using a RLM trained to do efficient dispatching of resources \cite{llm6G}.
+A Controller is also named Edge node in the recent literature and is basically a device or a set of
+devices that have much more compute power than the end-nodes that they manage.
 
-In any way, shape, or form the controller, usually named also edge, is shipped it's a necessary
-component of a network such as 6G because it's going to be necessary to be able to understand and
-act according to the user's status and context. It also provides more computational power for bigger
-inference tasks that would be otherwise impossible on the smaller end nodes.
+Their function is to be able to handle more complex inference and model training, such controllers
+should have enough power to do inference on classic models like GPT-3 and, with some tricks, should
+also be to undergo training and re-training of such models.
+
+Considering the literature edge nodes or controllers are considered to be larger downstream nodes inside the
+network capable of handling a complex inference using the results coming from smaller models at the
+end of the network, the idea provided in \cite{pga}, was to be able to do an automatic crash report
+for cars using LLMs running locally on the car or on the phone and aggregating the initial results
+at edge level.
+
+In other cases the LLM controller is used to understand the user's necessities and modifies
+pre-existing models accordingly, like in \cite{ai4ci}. Another solution seems to be more suited for a RLM
+approach, using a RLM trained to do efficient dispatching of resources \cite{llm6G}.
 
 If we consider a more industry-driven example, even in the field of heavy machinery or energy
 production, it's very useful to have a system able to take a decision extremely rapidly based on a
 certain situation. Modern control systems are able to take action and make corrections rapidly and
 precisely, providing excellent results and avoiding costly mistakes, having an LLM that is instead able
-to make more "management-oriented" decisions based on data might provide itself useful to avoid
+to make more "management-oriented" decisions in real time and based on data might provide useful to avoid
 energy or time wastes.
 
 \bigskip
@@ -73,28 +81,33 @@ CLOUD:
 \label{ssec:cloud}
 
 Last but not least it's important to take into consideration the fact that the bigger models that
-are used as a foundation for all of the other models that can be deployed through the controller to
-allow the user to have the most comprehensive and cohesive experience possible need to be trained
-somehow.
+are used as a foundation for all of the other models that can be deployed or cached in the
+controller initially have to be trained somehow and somewhere.
 
-If we consider the GPT-3 model, which is the one that is the name that appears the most in the
-recent literature, it would be necessary to have more than 1000 GPUs running non-stop for more than
-4 months to have the complete training of the 175B parameters that compose the model \cite{gaisnet}. This task
-would be impossible for the low power systems deployed at the end or even at the edge, therefore
-it's necessary to leverage the power of big data-centers positioned at the end of the network
-hierarchy. It's important to note, obviously, that such a task would be a waste of time for the big
-data-centers that we place at the end of the hierarchy, I will provide more detailed information
-about the various techniques that have been taken into consideration to solve the problem of
-handling enormous models in reduced spaces.
+If we consider the GPT-3 model, which is the one that is the name that appears the most in recent literature, it would be necessary to have more than 1000 GPUs running non-stop for more than
+4 months to have the complete training of the 175B parameters that compose the model \cite{gaisnet}. This task would be impossible for the low power systems deployed at the end or even at the edge, therefore
+it's necessary to leverage the power of big datacenters positioned at the center of the network
+hierarchy.
+Clearly, retraining GPT-3 is not an interesting task, but it's a way to show tha magnitude of the
+task that has to be accomplished.
+
+Essentially the datacenters would be used to train models (using some tricks that I will introduce
+in the next section), store data and do important inference on extremely big datasets.
 
 \bigskip
-I have to admit that from what I had originally promised this section of the paper does look way
-more bland than originally intended, this architecture that I provided above is nothing new and we
-have already seen it many times and is just the normal evolution of the cloud environment (which is
-already partly taking place at the moment), and I think that is the reason why it's extremely
-effective, the architecture is nothing new or revolutionary, it's just the fusion (with some evident
-caveats that we'll go through in the next session) of artificial intelligence with the pre-existing
-cloud and wireless-network infrastructure.
+It was surprising, while writing this section, to notice how many similarities are there between the
+architecture that I just drafted and the structure of 5G and B5G networks, if we forget about the
+technical challenges of the upgrade again for a second we can see how the move from 5G is just going
+to be a matter of reusing what was already implemented, upgrading the network structure and adding
+AI.
+
+The cloud section is already taken care of, since our current infrastructure basically runs on cloud
+services and many and more have been created, thrived and ended (if we think about services like
+Google Stadia, which offered a gaming platform running over the cloud or the ChatGPT service that
+allows the interaction with the GPT cloud over the cloud). Simplicity is the key to success, the
+architecture is nothing new or revolutionary, but the idea behind it is, and the solutions found to
+solve some of the problems that I have swept under the rug to avoid unnecessary difficulties are
+just as fascinating.
 
 In the next session I will go through the various challenges that we will be facing when the moment
 comes to start implementing the fusion of the service architecture of 5G with the AI agents and why
