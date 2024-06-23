@@ -5,13 +5,13 @@ upcoming 6G network. Clearly the opportunities depend on the architecture of the
 example specific but I am going to try and condense the structure of the various models proposed in the very recent literature into a series of shared features.
 
 The idea of implementing AI as an agent in the field of 6G networking is rooted into the want for
-the creation of the most versatile personal assistant in commerce, attempts have been made in the
+the creation of the most versatile personal assistant in commerce. Attempts have been made in the
 past on the consumer level with clearly inferior models (e.g. "Siri" or "Cortana") but now the
 objective is to create a seamless and encompassing ecosystem that can adapt and provide the user
 with information on his own self that goes beyond anything we can currently imagine. An example that
-recurs often in the literature to explain what the potential of AI is to have a set of non-invasive sensors that can provide with discretely precise measurements of health data (bpm,
+often recurs in the literature to explain what the potential of AI, is to have a set of non-invasive sensors that can provide with discretely precise measurements of health data (bpm,
 glicemy, pressure, etc...) and having a model on a device, like a smartphone, that is able to understand
-whether the values are in the norm and in case provide advices to make them better, this would have
+whether the values are in the norm and eventually provide pieces of advice to make them better. This would have
 to be inserted in a framework that is also able to reliably understand the user's attitude and
 context to avoid annoying push notifications.
 
@@ -26,21 +26,21 @@ END:
 \label{ssec:end}
 
 Going from the ground-up we can build the network architecture starting with the sensors, the end
-devices, basically a fog of computational devices of all matters and sizes that are able to do
+devices, basically a Fog of computational devices of all matters and sizes that are able to do
 computation, generate data or process information. Less than the 1\% of these nodes is going to be
 capable of running models and usually they will be extremely simple in nature, probably the only LLM
 available would be the ones in the order of <1B.
 
-The fog is supposedly a very heterogeneous mass of computing devices, probably the most important
+The Fog is supposedly a very heterogeneous mass of computing devices. Probably the most important
 characteristic of this element of the hierarchy is the variance of computational power of the
-devices. In the following I will list all of the devices that I think will be part of the network.
+devices. Two different classes of devices came to mind when thinking about the Fog structure:
 
 \underline{Sensors} - which are capable of handling only the measurement of certain parameters and some limited computations (usually they are battery-powered devices).
 
 \underline{Non-sensing devices} - this category is quite broad but I would consider all of the personal
-devices to be part of it, anything that the user can interact with and is connected to the 6G network should be considered a bigger node in the fog and should be capable of running AI models.
+devices to be part of it, anything that the user can interact with and is connected to the 6G network should be considered a bigger node in the Fog and should be capable of running AI models.
 
-The fog is supposedly a very heterogeneous mass of computing devices, probably the most important
+The Fog is supposedly a very heterogeneous mass of computing devices, probably the most important
 characteristic of this element of the hierarchy is the variance of computational power of the
 devices. In the following I will list all of the devices that I think will be part of the network.
 
@@ -53,7 +53,7 @@ CONTROLLER:
 A Controller is also named Edge node in the recent literature and is basically a device or a set of
 devices that have much more compute power than the end-nodes that they manage.
 
-Their function is to be able to handle more complex inference and model training, such controllers
+Its function is to be able to handle more complex inference and model training, such controllers
 should have enough power to do inference on classic models like GPT-3 and, with some tricks, should
 also be to undergo training and re-training of such models.
 
