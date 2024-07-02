@@ -59,26 +59,99 @@ The safety hazard should be taken with the utmost caution since we are not talki
 most of the time, we are talking about training e-health models and such, having any company store
 such data for a network re-train should be considered a serious concern and should be avoided at all costs.
 
-SPLIT LEARNING
-Split learning (SL) is the first solution that we offer and can solve both problems at the same time.
-SL reduces the model size in order to allow for an efficient and secure training process, by
-splitting the model in two parts, the smaller one will be living on the END device, while the bigger
-one will be living on the CONTROLLER. The technique is clearly recursive and therefore the same
-conclusions can be drawn if a model is too big to reside inside the CONTROLLER.
+\bigskip
+\noindent
+FEDERATED LEARNING:
 
-SL is a really powerful tool going forward since it allows the model to be fine-tuned to the user's
-preference without having to send very private data to servers. That can be done by dividing the
-learning process and allowing devices in the END to handle the part of the training that has to do
-with the user's data, while the closest CONTROLLER (or the any CLOUD server) handles the training of
-the general pourpose part. The whole training process only requires the exchange of intermidiate
-gradient computations as shown in the picture below:
+
+\bigskip
+\noindent
+SPLIT LEARNING:
+
+Split learning (SL), in a way, is an upgrade of the FL technique.
+SL allows model the division of the model in various sub-models that can be trained separately, the
+backpropagated gradients can then be sent through the network to the "sibling nodes" to allow them
+to procede with their own training as is shown in Figure \ref{img:split-learning}.
+The way the model will be divided is dependent on many factors, some of them might be: size of the
+model, privacy concerns of the user, level of customization required by the user, network topology
+and level of mobility of the user, etc...
+Since the variables are many it might be a very good idea to allow the CONTROLLER to handle the
+decision on how to split the model, based on all the different variables it could be possible to
+deploy an RLM in the CONTROLLER that is able to chose how to slice the model in order to strike a
+balance between having too many different slices, energy efficiency and latency.
+
+SL will be a very powerful tool and a central part of the software architecture deployed alongside
+6G since it allows users to have powerful models at their disposal without sending their data to the
+cloud (the fine-tuning is done on-device) and without having to wait an eternity for the training
+process to be over.
 \begin{figure}
 	\center
+	\phantomcaption
+	\label{img:split-learning}
 	\includegraphics[scale=0.65]{figures/split-learning.png}
 	\caption{An example of the structure of a network implementing SL for model trainig
 		\cite{split-learning}}
 \end{figure}
+SL is just a piece of the intricate puzzle that we need to build, it allows us to have fast training
+procedures, supposing the model has been devided effectively, but it forces us to have the model
+fragmented in different parts of the network and this complicates things because we want the model
+to be "local" to the user, or at least the part that has been fine-tuned for his use.
+To grant this locality property we will need to have load balancing algorithms or RLMs that can
+handle the choice of model migration.
 
-FEDERATED LEARNING
+Although SL makes the training process possible while keeping user's private data safe, it
+introduces complications on the inference side, depending on the number of sections that the model
+has been partitioned into the inference process is going to require the participation of all the
+computing elements that store a part of the whole model. This implies a discrete volume of data that
+needs to be moved between the various compute elements in order to allow the calculation of the
+results.
 
-EFFICIENT TUNING
+Since the process leads to a very clear network strain we will be seeing in the following a series
+of compression techniquest that allow the reduction of the amount of data that need to be moved in
+the network to complete the inference process.
+
+\bigskip
+\noindent
+LOW-RANK ADAPTATION
+
+LOw-Rank Adaptation (LoRA) is a technique that freezes the pretrained model weights and injects
+trainable rank decomposition matrices into each layer of the Transformer architecture, greatly
+reducing the number of training parameters for downstream tasks.
+
+This technique really strikes the point because it's of the utmost importance to be able to reduce
+the number of trainable parameters for the constrained models that will need to face some sort of
+fine-tuning procedure in the END. Instead of doing a fine-tuning of the complete model we just take
+a look at Figure \ref{fig:lora}.
+\begin{figure}
+	\phantomcaption
+	\label{fig:lora}
+	\includegraphics{figures/lora.png}
+	\caption{The LoRA approach proposed in \cite{}}
+\end{figure}
+Per the studies made in article \cite{}, given a weight matrix $W_0 \in \R^{d \times k}$ we can
+actually represent it via a low-rank decomposition like:
+\begin{equation}
+	W_0 + \Delta W = W_0 + B \cdot A
+\end{equation}
+where $B \in \R^{d \times r}, A \in \R^{r \times k}$ and the rank $r$ is much smaller than either
+$d$ (which is the full rank of the dense layers' decomposition matrices, in the case of GPT-3 the
+count can get up to 12.288, which makes them really huge matrices) or $k$, and these are the ones
+shown in \ref{fig:lora}. The result is an extremely underdimensioned matrix with respect to the ones that we would have had to work with in origin.
+
+The gradient updates for the matrix $W_0$ are frozen while $A$ and $B$ contain the trainable
+parameters.
+
+When utilizing this technique in the field of Transformers (which is fundamental inside LLM
+architectures) the empirical results when using GPT-3 175B were the following:
+\begin{itemize}
+	\item slicing VRAM of up to $2/3$ since there is no need to store Adam optimizer states for
+		the frozen parameters (they went from 1.2 TB to 350GB of VRAM usage).
+	\item If the rank of the decomposition was 4 and, of all the transformer matrices, only the
+		value projection and query matrices were adapted the checkpoint size is reduced of
+		circa 10000 times which in turns means very easy model switching due to the
+		forgettable size of LoRA weights.
+\end{itemize}
+To provide another reason for LoRA, it's really easy to implement next to other techniques. I would
+go as far as to say that it's essential to allow the correct implementation of distributed
+learning techniques like SL because even the partial retrain of a network for fine-tuning might be
+too expensive for the underpowered nodes at the END of the 6G network.
