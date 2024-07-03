@@ -28,17 +28,19 @@
 \usepackage[T1]{fontenc}
 \usepackage{kpfonts}
 
+\usepackage{wrapfig}
+
 \usepackage{setspace}
 \setstretch{1.125}
 
 \usepackage{hyperref}
 \hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=cyan,
-    pdfpagemode=FullScreen,
-  }
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,
+	urlcolor=cyan,
+	pdfpagemode=FullScreen,
+}
 \urlstyle{same}
 
 % Color definitions
@@ -56,7 +58,7 @@
 \fancyhead[R]{\includegraphics[width=0.11\textwidth]{figures/unimi.jpg}}
 
 \fancyfoot[L]{Cloud Computing Technologies Project\\Dipartimento di tecnologie informatiche Giovanni
-Degli Antoni}
+	Degli Antoni}
 \fancyfoot[R]{\thepage}
 
 \setlength{\headheight}{15mm}
@@ -66,13 +68,13 @@ Degli Antoni}
 \newtheorem{innercustomgeneric}{\customgenericname}
 \providecommand{\customgenericname}{}
 \newcommand{\newcustomtheorem}[2]{
-  \newenvironment{#1}[1]
-  {
-   \renewcommand\customgenericname{#2 -}
-   \renewcommand\theinnercustomgeneric{##1}
-   \innercustomgeneric
-  }
-  {\endinnercustomgeneric}
+	\newenvironment{#1}[1]
+	{
+		\renewcommand\customgenericname{#2 -}
+		\renewcommand\theinnercustomgeneric{##1}
+		\innercustomgeneric
+	}
+	{\endinnercustomgeneric}
 }
 
 % Definition of the various specific custom environments
@@ -91,14 +93,14 @@ Degli Antoni}
 
 % Definition of a specific theorem style for the proof environment
 \newtheoremstyle{break}
-    {\topsep}
-    {\topsep}
-    {\normalfont}
-    {}
-    {\bfseries}
-    {.}
-    {\newline}
-    {}
+{\topsep}
+{\topsep}
+{\normalfont}
+{}
+{\bfseries}
+{.}
+{\newline}
+{}
 % Definition of the proof environment
 \theoremstyle{break}
 \newtheorem*{prf}{Proof}
@@ -210,11 +212,11 @@ Degli Antoni}
 \newcommand{\bm}[1]{\mathbf{#1}}
 
 \tikzset{
-    defv/.style={circle,minimum size=0.5cm,fill=cyan!20,draw=teal},
-    purv/.style={circle,minimum size=0.5cm,fill=violet!20,draw=purple},
-    redv/.style={circle,minimum size=0.5cm,fill=orange!20,draw=red},
-    defe/.style={-},
-    rede/.style={-,draw=red},
-    greene/.style={-,draw=greene},
-    dashed/.style={dash pattern={on 7pt off 5pt}}
+	defv/.style={circle,minimum size=0.5cm,fill=cyan!20,draw=teal},
+	purv/.style={circle,minimum size=0.5cm,fill=violet!20,draw=purple},
+	redv/.style={circle,minimum size=0.5cm,fill=orange!20,draw=red},
+	defe/.style={-},
+	rede/.style={-,draw=red},
+	greene/.style={-,draw=greene},
+	dashed/.style={dash pattern={on 7pt off 5pt}}
 }
