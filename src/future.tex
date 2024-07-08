@@ -1,0 +1,38 @@
+\externaldocument{../main.tex}
+Everything that has been introduced to this point has that \textit{je ne sais quoi} of feasible, we
+have all of the pieces needed to build the puzzle and the direction seems to be the right one, all
+that is required now is just research to see how the various components interact and if there is
+anything that can be done to increase the performance, or the efficiency.
+
+As with any other progress in the field of computer science, but more so with this one than any
+other, having the guarantee of dealing with an extremely efficient system that can do inference and
+train complex models with by making compromises with the lowest possible overhead might reduce
+dramatically the amount of ENs that would need to be deployed at the edge of the various cells
+introduced in \ref{sec:opportunities} (ENs are very costly to produce because necessitate the help of GPUs to perform
+training and inference efficiently).
+
+Many important steps forward have been made when it comes to LLM optimization and we achieved very
+good results even when deployed in resource constrained conditions, this does not mean, though, that
+the research is over. While with a model like QLoRA it's possible to fine-tune a 65B model in just
+under 24 hours with a single GPU there is going to be the need of fine-tuning and training more than
+just one model at the same time, in the meanwhile the ENs and END devices
+will have to cooperate to do inference and solve more classical requests that do not necessarily require AI
+intervention.
+
+That is why it's still necessary to put a lot of work in the field of inference and training
+optimization at low precisions using instruments like LoRA, QLoRA and quantization; furthermore, as
+was shown in \ref{sec:technical-limitations} SL is a very powerful technique that makes training possible even in constrained
+environments (especially if paired with quantization techniques), more work should be put in trying
+to solve the problem of finding optimal splitting points for models using RLMs or other heuristic
+techniques based on different network parameters (as was shown in \cite{rlm-split-learning}).
+
+Last but not least, there is no framework that puts all of the ingredients together, therefore it's
+of the maximum importance to start working in that direction to solve the orchestration problems
+that arise from working with an architecture as complex as 6G's. Some questions that could be
+interesting for future research could be the following:
+\begin{itemize}
+	\item How to handle the mobility of users and how to guarantee the principle of locality of
+	      the model shards generated via SL?
+	\item How to efficiently split the network in order to maintain good inference performance
+	\item How to handle model caching
+\end{itemize}
