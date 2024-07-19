@@ -20,9 +20,12 @@ consideration two different factors:
 \begin{itemize}
 	\item The latency: we can put all of the big models (like GPT-4, Stable diffusion, LLaMa,
 	      etc...) in the CLOUD, while keeping lighter models like (LLaMa7B) closer to the
-	      user. Having such an organization would mean that the end users would need to wait for a time proportional to the quality of the response.
+	      user. Having such an organization would mean that the end users would need to wait for a
+		  time proportional to the quality of the response.
 
-	      Clearly, if the intervention of a model such as GPT-4v is required then the request will subsequently experience very big latency due to how big of a leap inside the architecture the message is going to need to do:
+	      Clearly, if the intervention of a model such as GPT-4v is required then the request will
+		  subsequently experience very big latency due to how big of a leap inside the architecture
+		  the message is going to need to do:
 	      \begin{itemize}
 		      \item Sending the request from END to CLOUD, passing therefore through many
 		            different nodes that, at the moment, do not serve any function other
@@ -31,17 +34,20 @@ consideration two different factors:
 		      \item Sending the response from CLOUD to END.
 	      \end{itemize}
 	      Since the operation of inference is already costly it's much better to be able to do
-	      inference (even on bigger models) as close to the edge of the network as possible, which in turn leads us to the next problem
+	      inference (even on bigger models) as close to the edge of the network as possible, which
+		  in turn leads us to the next problem
 
 	\item The space and compute: having to load models in memory or even saving them is
 	      extremely expensive, that is because of the amount of resources required.
 	      As can be seen in \cite{hug-optimization} the dimensions of required VRAM in GPU for LLMs at
 	      different ranges of performance (from GPT-3 to bigcoder/starcoder) require between 350 and
-	      30 GB of VRAM, which is already extreme for any computing device that might inhabit the Fog, even at the lowest end of the model spectrum.
+	      30 GB of VRAM, which is already extreme for any computing device that might inhabit the
+		  Fog, even at the lowest end of the model spectrum.
 
 	      Even the requirements in terms of basic storage are completely out of the capabilities of
 	      the majority of devices inside the Fog (175 GB for GPT-3 is a lot, especially if we consider
-	      that the user might not have stored locally just the one LLM but might need to deploy different ones for different pourposes).
+	      that the user might not have stored locally just the one LLM but might need to deploy
+		  different ones for different pourposes).
 
 	      Last but not least, doing inference on the model or training the model will most likely
 	      require more compute power than the one available to most of the devices in the Fog.
@@ -49,8 +55,9 @@ consideration two different factors:
 
 It's clear enough that what is required here is to be able to employ smartly all of the resources at
 our disposal to allow efficient training, re-training and fine-tuning operations, while, at the same
-time, being able to save more than one model on board in order to serve END devices as fast as possible when necessary. To make matters worse, when fine-tuning a model with users' data the procedure should be done as
-securely as possible, meaning that user's data should never leave their device.
+time, being able to save more than one model on board in order to serve END devices as fast as
+possible when necessary. To make matters worse, when fine-tuning a model with users' data the
+procedure should be done as securely as possible, meaning that user's data should never leave their device.
 The safety hazard should be taken with the utmost caution since we are talking about an
 unprecedented amount of data that comes from different spheres of a users' life and in general all
 very private e.g. biometric, private audio and video and very precise location information.
