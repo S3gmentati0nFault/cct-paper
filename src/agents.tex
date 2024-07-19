@@ -2,14 +2,16 @@
 
 Mobile communication technologies have been a standard evolving since the very first
 generation of the technology released in 1981. Every ten years a new standard is formulated and
-developed to propel the industry forward, updates have not been necessarily industry shifting, as an example, the move from 3G to 4G was more a performance bump,
-meanwhile the passage to 5G and 6G represented and will represent a big leap forward in terms of
-network capabilities, the mobile network and cloud infrastructure will be so tightly interconnected
-that will basically become one.
+developed to propel the industry forward, updates have not been necessarily industry shifting, as an
+example, the move from 3G to 4G was more a performance bump, meanwhile the passage to 5G and 6G
+represented and will represent a big leap forward in terms of network capabilities, the mobile
+network and cloud infrastructure will be so tightly interconnected that will basically become one.
 
 Currently, researchers from all fields and developers are studying and pushing the boundaries of
 network technology to move from theoretical study to actual practice, the first real world tests of
-the new network should be expected not earlier than 2030. According to Nokia\cite{nokiabell} the six key aspects of the future generation of mobile communication technologies can be summarized in the following subsections.
+the new network should be expected not earlier than 2030. According to Nokia\cite{nokiabell} the six
+key aspects of the future generation of mobile communication technologies can be summarized in the
+following subsections.
 
 \bigskip
 \noindent
@@ -20,8 +22,8 @@ NEW SPECTRUM TECHNOLOGIES:
 5G, in essence, increased the datarates for all users in mobility both upstream and downstream,
 alongside a complete re-organization of the network putting the final nail in the coffin of an
 hardware network exclusively deicated to phone connectivity and calling, by using new spectral
-wavelengths and a new type of antenna that took advantage of millimeter waves (wavelength in the realm of the
-millimeters), the available spectrum bands were:
+wavelengths and a new type of antenna that took advantage of millimeter waves (wavelength in the
+realm of the millimeters), the available spectrum bands were:
 \begin{itemize}
 	\item 24 - 71 GHz which is high band 5G.
 	\item 2.5 - 4.9 GHz which is the mid band 5G.
@@ -29,7 +31,8 @@ millimeters), the available spectrum bands were:
 \end{itemize}
 6G is thought to be implemented to use more wisely the space of millimeter waves and go beyond 71
 GHz allowing for a higher spectral efficiency, the new standard will incorporate the 5G spectrum
-standard, widen it, and take better advantage of the pre-existing bands. The structure of the spectrum is still being studied but the foundations seem to be the following:
+standard, widen it, and take better advantage of the pre-existing bands. The structure of the
+spectrum is still being studied but the foundations seem to be the following:
 \begin{itemize}
 	\item 470 - 690 MHz extreme wide area coverage.
 	\item 600 - 2600 MHz wide area coverage.
@@ -75,19 +78,18 @@ These models go through the following lifecycle:
 	      leveraging a general (foundational) knowledge \cite{gaisnet}.
 	\item Fine-tuning: During the operation the pre-trained network gets a full or partial
 	      retraining to make it more suitable for the domain-specific knowledge required by
-	      the user's usecase.
+	      the user's usecase. This is also known as alignement procedure.
 
-	      The fine-tuning procedure can be both complete, in which all parameters are updated,
-	      and parameter-efficient, in which only a subset of the parameters is updated; in this case the
-	      backbone is generally frozen and only a very small percentage of the total
-	      parameters is re-trained. Effort is being put into discovering new nd better ways to
-	      do parameter efficient fine-tuning, full network fine-tuning is not as interesting of a research branch because of the security implications linked to the topic \cite{gaisnet}.
+	      Fine-tuning can be both complete, in which all parameters are updated,
+	      and parameter-efficient, in which only a subset of the parameters is updated; in this case
+		  the backbone is generally frozen and only a very small percentage of the total
+	      parameters is re-trained, to achieve this LoRA and other compression techniques should be employed, I will go through an introduction to LoRA in section \ref{sec:technical-limitations}. Effort is being put into discovering new and better ways to do parameter efficient fine-tuning, full network fine-tuning is not as interesting of a research branch because of the security implications linked to the topic \cite{gaisnet}.
 
-	      One state of the art technique in the field of parameter-efficient fine-tuning is the
-	      so-called LoRA which will be encountered in section \ref{sec:technical-limitations}.
 	\item Inference: Terminals input unlabeled data in the pre-trained and fine-tuned model and
 	      the network generates an output.
 \end{enumerate}
+
+The Fine-tuning step is not necessary and sometimes the pre-trained model can be used as is, but in general the models that have become part of our daily lives undergo particular "fine-tuning" procedures: ChatGPT uses context and prompt (Prompt fine-tuning), to enhance its capabilities, the performance of the model afterwards increases\cite{openAI}; Microsoft's BingAI has a different approach to the matter, undergoing a "grounding" process where it first fetches context information from the internet from a reputable souce (like Wikipedia) and then uses the retrieved information alongside the user's prompt to generate a response\cite{zerotohero}.
 
 AI for the network is usually employed with the aim of reducing resource usage allowing for a
 more efficient employment of the available resources. This can be achieved using Reinforced learning
@@ -105,7 +107,8 @@ individual security.
 
 Giving AI more power and control means that it's necessary to be able to
 control its operation and make sure that is, not only, behaving according to specification, but also
-not being fed polluted data during the training process by malicious third parties. Having extremely-high-frequency bands in the spectrum will expose communications to easy
+not being fed polluted data during the training process by malicious third parties. Having
+extremely-high-frequency bands in the spectrum will expose communications to easy
 eavesdropping, it's therefore necessary to create security procedures that allow communications to
 remain private even when using these frequency bands. With this particular aspect in mind, research
 efforts are being made to see if AI models can be used to make internet connections more secure,
@@ -119,7 +122,9 @@ SENSING NETWORK:
 \label{ssec:sensing-network}
 
 The use of Machine Learning and AI techniques coupled with a very high number of sensors will allow
-the nodes of the network to sense the environment around them, this is an extremely useful technique to generate a Digital Twin of the real world, storing precious information about the surroundings and generating information through LLM inference.
+the nodes of the network to sense the environment around them, this is an extremely useful technique
+to generate a Digital Twin of the real world, storing precious information about the surroundings
+and generating information through LLM inference.
 
 Regarding the above Minrui Xu et al. \cite{pga} wrote a paper discussing how the multimodality of
 today’s LLMs alongside a wide array of sensors could be used to generate automatically car crash
@@ -132,9 +137,10 @@ EXTREME CONNECTIVITY:
 \phantomsection
 \label{ssec:extreme-connectivity}
 
-The level of the services that are probably going to be brought to 6G require extremely fast and extremely
-low-latency communication, therefore the Ultra-Reliable and Low-Latency Communication service will
-be refined and improved to serve the new standard and to bring the latency below one millisecond.
+The level of the services that are probably going to be brought to 6G require extremely fast and
+extremely low-latency communication, therefore the Ultra-Reliable and Low-Latency Communication
+service will be refined and improved to serve the new standard and to bring the latency below one
+millisecond.
 
 \bigskip
 \noindent
@@ -142,10 +148,17 @@ NEW ARCHITECTURAL MODELS:
 \phantomsection
 \label{ssec:architectural-models}
 
-6G is thought to work alongside cloud and allow users to experience it differently, the paradigm of having
-big datacenters at the top of the cloud that handle all of the computation will be shifted towards an extremely distributed architecture centered around data management pipelines that involve only the devices in the hierarchy that are of use to the computation itself.
+6G is thought to work alongside cloud and allow users to experience it differently, the paradigm of
+having big datacenters at the top of the cloud that handle all of the computation will be shifted
+towards an extremely distributed architecture centered around data management pipelines that involve
+only the devices in the hierarchy that are of use to the computation itself.
 
-This means that the 6G network will be deploying, alongside the big datacenters at the top of the cloud, a series of intermediate stations that grow in computational power the more the data goes up in the hierarchy. For the scope of this paper I will be most interested in the edge stations, which are the closest to the end users and the ones that will have to deal with storing and operating inference on LLMs.
+This means that the 6G network will be deploying, alongside the big datacenters at the top of the
+cloud, a series of intermediate stations that grow in computational power the more the data goes up
+in the hierarchy. For the scope of this paper I will be most interested in the edge stations, which
+are the closest to the end users and the ones that will have to deal with storing and operating
+inference on LLMs.
 
 \medskip
-In the next sections I’ll be diving deeper in the opportunities, challenges and solutions associated with the deployment of LLMs at the edge of the network.
+In the next sections I’ll be diving deeper in the opportunities, challenges and solutions associated
+with the deployment of LLMs at the edge of the network.

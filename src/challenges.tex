@@ -3,8 +3,8 @@
 In the previous section I took some shortcuts to give a clearer view of the core components of the
 6G architecture while highlighting the idea that the future of mobile communication technologies,
 while revolutionary for many different reasons, is just a different spin of the Cloud architecture,
-which has been proven to be the future of computation time and time again. It's now time to look under the
-rug and explore the problems and some potential solutions that have been proposed.
+which has been proven to be the future of computation time and time again. It's now time to look
+under the rug and explore the problems and some potential solutions that have been proposed.
 
 Since most of the solutions are pretty much interchangeable or work together to solve the same
 problems I will first explore the single problems and then move to explaining the various solutions
@@ -92,11 +92,11 @@ own copy of the base model is not possible for two reasons:
 		the various END nodes participating in the training procedure, that would put
 		extreme amounts of strain on the network, even in the case of compression.
 	\item \textbf{updating the models}: The fundamental concept of FL is to have a
-		decentralized training process thanks to the participation of different nodes in 
+		decentralized training process thanks to the participation of different nodes in
 		the network, but small nodes such as the END nodes cannot possibly handle LLM
 		inference (let us be reminded that all of the current LLM-based applications run in
 		cloud and are therefore just frontends that are not running the model locally, like
-		the latest Gemini model released by Samsung for 2024). 
+		the latest Gemini model released by Samsung for 2024).
 \end{itemize}
 That said I think that using LoRA, which will be discussed further in the article, alongside FL
 makes for an amazing weapon for training of bigger models at the center of the network, being able
@@ -122,7 +122,8 @@ balance between having too many different slices, energy efficiency and latency.
 
 SL will be a very powerful tool and a central part of the software architecture deployed alongside
 6G since it allows users to have powerful models at their disposal without sending their data to the
-cloud (the fine-tuning is done on-device) and without having to wait too long for the training process to be over.
+cloud (the fine-tuning is done on-device) and without having to wait too long for the training
+process to be over.
 \begin{figure}
 	\center
 	\phantomcaption
@@ -176,7 +177,9 @@ actually represent it via a low-rank decomposition like:
 \end{equation}
 where $B \in \R^{d \times r}, A \in \R^{r \times k}$ and the rank $r$ is much smaller than either
 $d$ (which is the full rank of the dense layers' decomposition matrices, in the case of GPT-3 the
-count can get up to 12.288) or $k$, and these are the ones shown in \ref{fig:lora}. The result is an extremely underdimensioned matrix with respect to the ones that we would have had to work with in origin.
+count can get up to 12.288) or $k$, and these are the ones shown in \ref{fig:lora}. The result is an
+extremely underdimensioned matrix with respect to the ones that we would have had to work with in
+origin.
 
 The gradient updates for the matrix $W_0$ are frozen while $A$ and $B$ contain the trainable
 parameters.
