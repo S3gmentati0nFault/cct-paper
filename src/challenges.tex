@@ -59,6 +59,43 @@ very private e.g. biometric, private audio and video and very precise location i
 \noindent
 FEDERATED LEARNING:
 
+Federated Learning is the first distributed learning technique for machine learning models with a
+very strong focus on users' data privacy. Google developers came up with the technique to solve the
+problem of base model update without access to private data for the word predictor implemented in
+Android.
+
+At a very high level FL works by downloading a basic version of the model locally on the device, if
+we consider the example of the word predictor the basic information will be the most basic form of
+the predictor and dictionary, and then for a certain amount of time or epochs the model will undergo
+updates based on local data, in our case we will be talking about updates to the dictionary and new
+inference rules; lastly, once the epochs counter is depleated, the resulting model undergoes
+gradient backpropagation and the result is encrypted so that private (and reconstructible) data
+cannot be inferred by malicious third parties.
+
+Even without a deeper dive in the inner workings of FL it's really easy to see how difficult it is
+to extend the above technique to the world of LLMs, having small extremal terminals handling their
+own copy of the base model is not possible for two reasons:
+\begin{itemize}
+	\item \textbf{size}: The models are simply too large to be saved entirely on modern day
+		mobile hardware, the only possible solutions to this issue would be to do model
+		compression (changing the precision of the float values in the weights matrices of
+		the model) or one of the variants of LoRA.
+
+		Furthermore the model would need to be moved repeatedly between the center node and
+		the various END nodes participating in the training procedure, that would put
+		extreme amounts of strain on the network, even in the case of compression.
+	\item \textbf{updating the models}: The fundamental concept of FL is to have a
+		decentralized training process thanks to the participation of different nodes in 
+		the network, but small nodes such as the END nodes cannot possibly handle LLM
+		inference (let us be reminded that all of the current LLM-based applications run in
+		cloud and are therefore just frontends that are not running the model locally, like
+		the latest Gemini model released by Samsung for 2024). 
+\end{itemize}
+That said I think that using LoRA, which will be discussed further in the article, alongside FL
+makes for an amazing weapon for training of bigger models at the center of the network, being able
+to have a series of supercomputers training a new base model that will be later passed on to the
+lighter nodes inside the network makes the training procedure much more efficient than it would be
+if the training was being handled by just one of the central nodes in the network.
 
 \bigskip
 \noindent
