@@ -171,7 +171,7 @@ explained by Figure \ref{fig:lora}.
 	\caption{The LoRA approach proposed in \cite{lora}}
 \end{wrapfigure}
 Per the studies made in article \cite{lora}, given a weight matrix $W_0 \in \R^{d \times k}$ we can
-actually represent it via a low-rank decomposition like:
+represent the weight update matrix via a low-rank decomposition like:
 \begin{equation}
 	W_0 + \Delta W = W_0 + B \cdot A
 \end{equation}
@@ -184,7 +184,7 @@ origin.
 The gradient updates for the matrix $W_0$ are frozen while $A$ and $B$ contain the trainable
 parameters.
 
-When utilizing this technique in the field of Transformers (which is the fundamental constituend of
+When utilizing this technique in the field of Transformers (which is the fundamental constituent of
 LLM architectures) the empirical results when using GPT-3 175B were the following:
 \begin{itemize}
 	\item slicing VRAM of up to $2/3$ since there is no need to store Adam optimizer states for
