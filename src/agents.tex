@@ -1,9 +1,9 @@
 \externaldocument{../main.tex}
 
 Mobile communication technologies have been a standard evolving since the very first
-generation of the technology released in 1981. Every ten years a new standard is formulated and
+generation, released in 1981. Every ten years a new standard is formulated and
 developed to propel the industry forward, updates have not been necessarily industry shifting, as an
-example, the move from 3G to 4G was more a performance bump, meanwhile the passage to 5G and 6G
+example, the move from 3G to 4G was more a performance bump \cite{baeldung3g}, meanwhile the passage to 5G and 6G
 represented and will represent a big leap forward in terms of network capabilities, the mobile
 network and cloud infrastructure will be so tightly interconnected that will basically become one.
 
@@ -42,7 +42,8 @@ spectrum is still being studied but the foundations seem to be the following:
 	\item > 92 GHz will be the extremely short range communication system and is currently being
 	      called the sub-TeraHertz band.
 \end{itemize}
-It's easy to see how the concept of dividing frequences into sub-bands can be extended to the
+It's easy to see how the concept of dividing frequences into sub-bands based on geographical area
+coverage can be extended to the
 architectural model in order to achieve specific results, I will be using this division to go
 deeper into my architectural paradigm in \ref{sec:opportunities}.
 
@@ -56,44 +57,53 @@ On the particular aspects of AI and Machine Learning we have many diverse weapon
 the service of the network or to the service of the users depending on the end goal that needs to
 be achieved.
 
-AI for the end user comes especially in the form of the so called LLM or Large Language Model. In
-the last couple of years models like ChatGPT, GPT-4, LLaMa, etc... Have seen a spike not only in
+AI for the end user comes especially in the form of the so called LLM or Large Language Model. This
+machine learning models work on text and are trained in a way that they are able to predict, inside
+a token sequence, the next most probable token, tokens are essentially sequences of words that can contain
+one or more words \cite{wikiLLM}.
+
+In the last couple of years models like BingAI, GPT-4, LLaMa, etc... Have seen a spike not only in
 their usage but also in the capabilities of the deployed models. The multimodal
 nature of some of the bigger models can be leveraged to allow a more reliable and detailed
-resolution of the problems at hand and the use of prompt engineering techniques like "Chain of
-Thought" and "Retrieval Augmented Generation" can turn the devices in the hand of end users into
+resolution of the problems at hand and the use of techniques like fine-tuning, grounding or prompt
+engineering approaches like "Chain of Thought" and "Retrieval Augmented Generation" can turn the devices in the hand of end users into
 powerful assistants that can handle many tasks both on-demand and autonomously.
 
 Private automation, robotics and healthcare are just a couple of the fields that will be most
 impacted by the addition of LLMs very close to the edge of the network. In the following I will be
-considering LLMs especially because of their importance in the current technological panorama
-innovative discovery since the beginning of the century.
+considering LLMs especially because of their importance in the current technological panorama.
 
 \bigskip
 
-These models go through the following lifecycle:
+LLM lifecycle can be summarized as follows:
 \begin{enumerate}
 	\item Pre-training: During the pre-training procedure the model undergoes a general training
 	      procedure on very large unlabeled datasets, preparing it to handle user requests
 	      leveraging a general (foundational) knowledge \cite{gaisnet}.
-	\item Fine-tuning: During the operation the pre-trained network gets a full or partial
-	      retraining to make it more suitable for the domain-specific knowledge required by
-	      the user's usecase. This is also known as alignement procedure.
+	\item Fine-tuning: Fine-tuning is an optional procedure that consists of aligning the
+	      pre-trained network with the user's necessities throught a partial or total retrain.
 
 	      Fine-tuning can be both complete, in which all parameters are updated,
 	      and parameter-efficient, in which only a subset of the parameters is updated; in this case
-		  the backbone is generally frozen and only a very small percentage of the total
+	      the backbone is generally frozen and only a very small percentage of the total
 	      parameters is re-trained, to achieve this LoRA and other compression techniques should be employed, I will go through an introduction to LoRA in section \ref{sec:technical-limitations}. Effort is being put into discovering new and better ways to do parameter efficient fine-tuning, full network fine-tuning is not as interesting of a research branch because of the security implications linked to the topic \cite{gaisnet}.
 
-	\item Inference: Terminals input unlabeled data in the pre-trained and fine-tuned model and
+	\item Inference: Terminals input unlabeled data in the pre-trained and optionally fine-tuned model and
 	      the network generates an output.
 \end{enumerate}
 
-The Fine-tuning step is not necessary and sometimes the pre-trained model can be used as is, but in general the models that have become part of our daily lives undergo particular "fine-tuning" procedures: ChatGPT uses context and prompt (Prompt fine-tuning), to enhance its capabilities, the performance of the model afterwards increases\cite{openAI}; Microsoft's BingAI has a different approach to the matter, undergoing a "grounding" process where it first fetches context information from the internet from a reputable souce (like Wikipedia) and then uses the retrieved information alongside the user's prompt to generate a response\cite{zerotohero}.
+The LLMs that we are in the habit of using at the moment actually do not undergo the fine-tuning
+procedure, services like ChatGPT and Bing-AI use different tricks that allow the models underneath
+to perform better in specific scenarios without the need of a true fine-tuning procedure.
+The OpenAI service ChatGPT uses context and prompt (Prompt fine-tuning or prompt-engineering), to
+enhance the model's capabilities \cite{openAI}; Microsoft's BingAI has a different approach to the
+matter, undergoing a "grounding" process where, upon request, the model first fetches context
+information from the internet from a reputable souce (like Wikipedia) regarding the key points of
+the question and then uses the retrieved information alongside the user's prompt to generate a response\cite{zerotohero}.
 
-AI for the network is usually employed with the aim of reducing resource usage allowing for a
-more efficient employment of the available resources. This can be achieved using Reinforced learning
-models, or RLMs.
+AI for the network is going to be a collection of machine learning algorithms that handle all of the
+infrastructural necessities of the network: secuirity, resource management, model splitting, model
+migration to follow users' mobility.
 
 \bigskip
 \noindent
@@ -107,10 +117,12 @@ individual security.
 
 Giving AI more power and control means that it's necessary to be able to
 control its operation and make sure that is, not only, behaving according to specification, but also
-not being fed polluted data during the training process by malicious third parties. Having
+not being fed polluted data during the training or fine-tuning process by malicious third parties. Having
 extremely-high-frequency bands in the spectrum will expose communications to easy
 eavesdropping, it's therefore necessary to create security procedures that allow communications to
-remain private even when using these frequency bands. With this particular aspect in mind, research
+remain private even when using these frequency bands.
+
+With this particular aspect in mind, research
 efforts are being made to see if AI models can be used to make internet connections more secure,
 one of the propositions made was to allow AI models to change encryption schemes on the fly based on
 real-time security analysis results \cite{6ainets}.
@@ -155,9 +167,9 @@ only the devices in the hierarchy that are of use to the computation itself.
 
 This means that the 6G network will be deploying, alongside the big datacenters at the top of the
 cloud, a series of intermediate stations that grow in computational power the more the data goes up
-in the hierarchy. For the scope of this paper I will be most interested in the edge stations, which
-are the closest to the end users and the ones that will have to deal with storing and operating
-inference on LLMs.
+in the hierarchy. Such intermediate nodes will be the ones that handle all of the computation
+associated to the infrastructure management, they will also manage all of the LLM-associated tasks
+linked to users (inference, fine-tuning, training, etc...).
 
 \medskip
 In the next sections I’ll be diving deeper in the opportunities, challenges and solutions associated
