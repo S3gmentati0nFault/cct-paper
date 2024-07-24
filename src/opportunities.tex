@@ -29,8 +29,8 @@ computation, generate data or process information. Less than the 1\% of these no
 capable of running models and usually they will be extremely simple in nature, probably the only LLM
 available would be the ones in the order of <1B.
 
-The Fog is supposedly a very heterogeneous mass of computing devices. Probably the most important
-characteristic of this element of the hierarchy is the variance of computational power of the
+The Fog is supposedly a very heterogeneous mass of computing devices. The most important
+characteristic of the Fog is the variance of computational power of the
 devices. Two different classes of devices came to mind when thinking about the Fog structure:
 
 \underline{Sensors} - which are capable of handling only the measurement of certain parameters and
@@ -72,7 +72,7 @@ to make more "management-oriented" decisions in real time and based on data migh
 energy or time wastes.
 
 Going back to the division shown in \ref{ssec:spectrum-technologies} we can see how the various
-bands have been devided based on the amount of surface covered, therefore I think that tracing a
+bands have been divided based on the amount of surface covered, therefore I think that tracing a
 parallelism and having a system based on small cells of varying sizes that are all contained into
 each other is quite a natural way of evolving the architecture. Each cell will be having one or more
 ENs that are responsible of helping downstream nodes with the harder tasks\footnote{All of the
@@ -108,8 +108,7 @@ CLOUD:
 \phantomsection
 \label{ssec:cloud}
 
-The last piece of the puzzle is the system of datacenters that take on the most complicated training
-and pre-training challenges that cannot be handled by any other nodes in the architecture or take on
+The last piece of the puzzle is the system of datacenters that take on the most complicated pre-training challenges that cannot be handled by any other nodes in the architecture or take on
 requests that do not have latency requisites and require a high level of precision.
 
 If we consider the GPT-3 model, which is the one that is the name that appears the most in recent literature, it would be necessary to have more than 1000 GPUs running non-stop for more than
@@ -122,19 +121,6 @@ Essentially the datacenters would be used to train models (using some tricks tha
 in the next section), store data and do important inference on extremely big datasets.
 
 \bigskip
-It was surprising, while writing this section, to notice how many similarities are there between the
-architecture that I just drafted and the structure of 5G and B5G networks, if we forget about the
-technical challenges for such an upgrade again for a second we can see how the move from 5G is just going
-to be a matter of reusing what was already implemented, upgrading the network structure and adding
-AI.
-
-The cloud section is already taken care of, since our current infrastructure basically runs on cloud
-services and many and more have been created, thrived and ended (if we think about services like
-Google Stadia, which offered a gaming platform running over the cloud or the ChatGPT service that
-allows the interaction with the GPT model over the cloud). Simplicity is the key to success, the
-architecture is nothing new or revolutionary, but the idea behind it is, and the solutions found to
-solve some of the problems that I have swept under the rug to avoid unnecessary difficulties are
-just as fascinating.
 
 In the next section I will go through the various challenges that we will be facing when the moment
 comes to start implementing the fusion of the service architecture of 5G with the AI agents and why
